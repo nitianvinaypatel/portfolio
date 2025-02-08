@@ -3,17 +3,13 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const CodingScore = ({
+const GFG = ({
   totalSolved,
-  totalQuestions,
+  basicSolved,
   easySolved,
-  totalEasy,
   mediumSolved,
-  totalMedium,
   hardSolved,
-  totalHard,
-  acceptanceRate,
-  ranking,
+  rank,
   profileLink,
 }) => {
   const [chartWidth, setChartWidth] = useState(280); // Default width
@@ -33,17 +29,17 @@ const CodingScore = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Set chartData as the number of solved problems in each category
-  const chartData = [easySolved || 0, mediumSolved || 0, hardSolved || 0];
+  // Add basicSolved to easySolved
+  const adjustedEasySolved = (easySolved || 0) + (basicSolved || 0);
 
-  // Calculate total problems solved in the different categories
-  const totalProblems = chartData.reduce((sum, num) => sum + num, 0);
+  // Set chartData as the number of solved problems in each category
+  const chartData = [adjustedEasySolved, mediumSolved || 0, hardSolved || 0];
 
   // Create a mapping for category counts
   const categoryCounts = {
-    Easy: { solved: easySolved || 0, total: totalEasy || 0 },
-    Medium: { solved: mediumSolved || 0, total: totalMedium || 0 },
-    Hard: { solved: hardSolved || 0, total: totalHard || 0 },
+    Easy: { solved: adjustedEasySolved },
+    Medium: { solved: mediumSolved || 0 },
+    Hard: { solved: hardSolved || 0 },
   };
 
   // ApexCharts options for the donut chart
@@ -59,13 +55,13 @@ const CodingScore = ({
         startAngle: -135,
         endAngle: 135,
         donut: {
-          size: "75%",
+          size: "90%",
           labels: {
             show: true,
             total: {
               show: true,
               label: "",
-              formatter: () => `${totalSolved}/${totalQuestions}`,
+              formatter: () => `${totalSolved}`,
             },
           },
         },
@@ -80,12 +76,12 @@ const CodingScore = ({
         colors: "#ffffff", // Set legend text color to white
       },
       formatter: function (seriesName) {
-        const { solved, total } = categoryCounts[seriesName];
-        return `${seriesName}: ${solved} / ${total}`;
+        const { solved } = categoryCounts[seriesName];
+        return `${seriesName}: ${solved}`;
       },
     },
     dataLabels: {
-      enabled: true,
+      enabled: false,
       style: {
         colors: ["#ffffff"],
         fontSize: "12px",
@@ -105,11 +101,11 @@ const CodingScore = ({
           series={chartData}
           type="donut"
           height={200}
-          width={chartWidth} // Dynamic width
+          width={chartWidth}
         />
       </div>
     </div>
   );
 };
 
-export default CodingScore;
+export default GFG;

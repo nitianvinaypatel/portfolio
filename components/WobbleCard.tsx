@@ -8,8 +8,9 @@ import leetcode from "@/public/leetcode.png";
 import gfg from "@/public/gfg.png";
 import { OrbitingCirclesDemo } from "./OrbitingCircles";
 import AboutContent from "./AboutContent";
-import { FaCode, FaLaptopCode } from "react-icons/fa";
-import CodingScore from "@/components/CodingScore";
+import LeetCode from "@/components/LeetCode";
+import GFG from "@/components/GFG";
+import { Loader2 } from "lucide-react";
 
 export function WobbleCardDemo() {
   const [leetCodeStats, setLeetCodeStats] = useState<{
@@ -28,6 +29,10 @@ export function WobbleCardDemo() {
     totalProblemsSolved: number;
     codingScore: number;
     instituteRank: number;
+    basic: number;
+    easy: number;
+    medium: number;
+    hard: number;
   } | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -35,8 +40,8 @@ export function WobbleCardDemo() {
     async function fetchData() {
       try {
         const [leetRes, gfgRes] = await Promise.all([
-          fetch("/api/leetcode"),
-          fetch("/api/gfg"),
+          fetch("/api/leetcode", { cache: "no-store" }),
+          fetch("/api/gfg", { cache: "no-store" }),
         ]);
 
         const leetData = await leetRes.json();
@@ -45,8 +50,18 @@ export function WobbleCardDemo() {
         if (leetRes.ok) setLeetCodeStats(leetData);
         else console.error("LeetCode API Error:", leetData);
 
-        if (gfgRes.ok) setGfgStats(gfgData);
-        else console.error("GFG API Error:", gfgData);
+        // if (gfgRes.ok) setGfgStats(gfgData);
+        if (gfgRes.ok) {
+          setGfgStats({
+            totalProblemsSolved: gfgData.totalProblemsSolved,
+            codingScore: gfgData.codingScore,
+            instituteRank: gfgData.instituteRank,
+            basic: gfgData.basic,
+            easy: gfgData.easy,
+            medium: gfgData.medium,
+            hard: gfgData.hard,
+          });
+        } else console.error("GFG API Error:", gfgData);
       } catch (error) {
         console.error("Fetching data failed:", error);
       } finally {
@@ -76,7 +91,7 @@ export function WobbleCardDemo() {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* LeetCode Stats Card */}
           <div className="lg:w-1/2 flex justify-center items-center p-5 bg-white dark:bg-gray-900 shadow-lg rounded-2xl border border-gray-300 dark:border-gray-700">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col  gap-4">
               {/* Header Section */}
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
@@ -104,11 +119,9 @@ export function WobbleCardDemo() {
               {/* Main Content */}
               <div className="text-gray-700 dark:text-gray-300">
                 {loading ? (
-                  <p className="text-gray-500 dark:text-gray-400 animate-pulse">
-                    Fetching stats...
-                  </p>
+                  <Loader2 className="animate-spin text-gray-500 dark:text-gray-400 h-[75%] w-[75%]" />
                 ) : leetCodeStats ? (
-                  <CodingScore
+                  <LeetCode
                     totalQuestions={leetCodeStats.totalQuestions}
                     totalSolved={leetCodeStats.totalSolved}
                     easySolved={leetCodeStats.easySolved}
@@ -160,21 +173,15 @@ export function WobbleCardDemo() {
               {/* Main Content */}
               <div className="text-gray-700 dark:text-gray-300">
                 {loading ? (
-                  <p className="text-gray-500 dark:text-gray-400 animate-pulse">
-                    Fetching stats...
-                  </p>
-                ) : leetCodeStats ? (
-                  <CodingScore
-                    totalQuestions={leetCodeStats.totalQuestions}
-                    totalSolved={leetCodeStats.totalSolved}
-                    easySolved={leetCodeStats.easySolved}
-                    totalEasy={leetCodeStats.totalEasy}
-                    mediumSolved={leetCodeStats.mediumSolved}
-                    totalMedium={leetCodeStats.totalMedium}
-                    hardSolved={leetCodeStats.hardSolved}
-                    totalHard={leetCodeStats.totalHard}
-                    acceptanceRate={leetCodeStats.acceptanceRate}
-                    ranking={leetCodeStats.ranking}
+                  <Loader2 className="animate-spin text-gray-500 dark:text-gray-400  h-[750%] w-[75%]" />
+                ) : gfgStats ? (
+                  <GFG
+                    totalSolved={gfgStats.totalProblemsSolved}
+                    basicSolved={gfgStats.basic}
+                    easySolved={gfgStats.easy}
+                    mediumSolved={gfgStats.medium}
+                    hardSolved={gfgStats.hard}
+                    rank={gfgStats.instituteRank}
                     profileLink="https://leetcode.com/vinaypatel_nitmz/"
                   />
                 ) : (

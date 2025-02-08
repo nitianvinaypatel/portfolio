@@ -10,6 +10,7 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
+    "@heroui/progress": "^2.2.7",
     "@nextui-org/navbar": "^2.2.7",
     "@nextui-org/react": "^2.6.10",
     "@react-three/drei": "^9.120.4",

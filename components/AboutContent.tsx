@@ -15,7 +15,7 @@ function AboutContent() {
     <div className="max-w-5xl">
       <div className="flex lg:flex-row flex-col justify-center">
         <div className="flex flex-col justify-center">
-          <div className="flex max-w-max items-center rounded-full border">
+          <div className="flex max-w-max items-center">
             <SparklesText className="mx-1 -mt-4" text="Hey there!👋" />
           </div>
           <h1 className="mt-2 max-w-2xl text-2xl font-extrabold tracking-tight md:text-2xl lg:text-5xl flex">

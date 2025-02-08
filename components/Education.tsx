@@ -42,11 +42,13 @@ const EducationTimeline: React.FC = () => {
       degree: "Bachelor of Technology",
       course: "Computer Science & Engineering",
       duration: "2022 - 2026",
-      description: "",
+      description:
+        "Currently i am in 6th semester of my B.Tech degree, i am learning new things and exploring new technologies.",
       achievements: [
-        "Published 2 research papers",
-        "Graduate Teaching Assistant",
-        "8.0 GPA",
+        "Paid internship in IIT BHILAI Project",
+        "Rank 1 in Hackventure 2.0 Hackathon",
+        "GDG NIT-Mizoram Lead",
+        "8.0 CGPA",
       ],
       image:
         "https://images.collegedunia.com/public/college_data/images/og_images/news/1669307994-pasted-image-0---2022-11-24T220727.310.png",
@@ -58,10 +60,9 @@ const EducationTimeline: React.FC = () => {
       course: "Mathematics & Science",
       duration: "2020 - 2021",
       description:
-        "Focus on Computer Architecture and Software Engineering. Led multiple team projects in software development.",
+        "Focused on Physics, Chemistry, and Mathematics, and prepared for jee mains and advance exams.",
       achievements: [
-        "Dean's List all semesters",
-        "Senior Project Award",
+        "Head Boy of the Class",
         "Computer Science Club President",
       ],
       image:
@@ -74,11 +75,10 @@ const EducationTimeline: React.FC = () => {
       course: "Mathematics & Computer Science",
       duration: "2018 - 2019",
       description:
-        "Advanced placement in Mathematics and Computer Science. Active participant in robotics competitions.",
+        "Focused on Mathematics, Science, and Computer Science, and prepared for board exams.",
       achievements: [
-        "Valedictorian",
-        "First place in State Robotics Competition",
-        "Perfect SAT Score",
+        "Among Top 5 in Class",
+        "1st Prize in Eassy Writing Competition",
       ],
       image:
         "https://i.ytimg.com/vi/INgjfWkI7iw/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVChRMA8=&rs=AOn4CLD5BB87yweGIBqRiwK6s_UcHlTHZg",
@@ -183,15 +183,13 @@ const EducationTimeline: React.FC = () => {
                       expandedId === education.id ? "max-h-96" : "max-h-0"
                     } overflow-hidden`}
                   >
-                    <p className="text-gray-700 mb-3">
-                      {education.description}
-                    </p>
+                    <p className="text-white mb-3">{education.description}</p>
                     <div className="space-y-2">
                       <h5 className="font-semibold text-green-400 flex items-center gap-2">
                         <FaAward className="text-yellow-500" />
                         Key Achievements
                       </h5>
-                      <ul className="list-disc list-inside text-gray-700 ml-4">
+                      <ul className="list-disc list-inside text-orange-400 ml-4">
                         {education.achievements.map((achievement, i) => (
                           <li key={i}>{achievement}</li>
                         ))}
