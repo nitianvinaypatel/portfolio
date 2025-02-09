@@ -16,6 +16,7 @@ import Achievement from "@/components/Achivement";
 import { AnimatedTestimonialsDemo } from "@/components/Testimonials";
 import ProjectCard from "@/components/ProjectCard";
 import { WobbleCardDemo } from "@/components/WobbleCard";
+import About from "@/components/About";
 
 const Home = () => {
   return (
@@ -23,7 +24,8 @@ const Home = () => {
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navItems} />
         <Hero />
-        <WobbleCardDemo />
+        <About />
+        {/* <WobbleCardDemo /> */}
         <Achievement />
         <Education />
         {/* <Grid /> */}
