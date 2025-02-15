@@ -10,7 +10,6 @@ import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import Education from "@/components/Education";
 import Nav from "@/components/Nav";
 import { TimelineDemo } from "@/components/Timeline";
-import { CardSpotlightDemo } from "@/components/Cardspotlight";
 import { AnimatedListDemo } from "@/components/AnimatedList";
 import Achievement from "@/components/Achivement";
 import { AnimatedTestimonialsDemo } from "@/components/Testimonials";
@@ -25,14 +24,15 @@ const Home = () => {
         <FloatingNav navItems={navItems} />
         <Hero />
         <About />
+        <Experience />
         {/* <WobbleCardDemo /> */}
         <Achievement />
         <Education />
         {/* <Grid /> */}
         <ProjectCard />
         {/* <RecentProjects /> */}
+        {/* <TimelineDemo /> */}
         <AnimatedTestimonialsDemo />
-        {/* <Experience /> */}
         <Footer />
       </div>
     </main>

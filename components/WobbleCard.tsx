@@ -10,7 +10,8 @@ import { OrbitingCirclesDemo } from "./OrbitingCircles";
 import AboutContent from "./AboutContent";
 import LeetCode from "@/components/LeetCode";
 import GFG from "@/components/GFG";
-import { Loader2 } from "lucide-react";
+import Loader from "@/components/Loader";
+import Link from "next/link";
 
 export function WobbleCardDemo() {
   const [leetCodeStats, setLeetCodeStats] = useState<{
@@ -90,107 +91,112 @@ export function WobbleCardDemo() {
       <WobbleCard containerClassName="col-span-1 lg:col-span-3 min-h-[400px]">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* LeetCode Stats Card */}
-          <div className="lg:w-1/2 flex justify-center items-center p-5 bg-white dark:bg-gray-900 shadow-lg rounded-2xl border border-gray-300 dark:border-gray-700">
-            <div className="flex flex-col  gap-4">
-              {/* Header Section */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={leetcode}
-                    width={40}
-                    height={40}
-                    alt="LeetCode Logo"
-                    className="rounded-full"
-                  />
-                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    LeetCode
+          <div className="flex lg:w-1/2  justify-center items-center h-[50%] p-5 bg-white dark:bg-gray-900 shadow-lg rounded-2xl border border-gray-300 dark:border-gray-700">
+            <Link
+              href="https://leetcode.com/vinaypatel_nitmz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              passHref
+            >
+              <div className="flex flex-col  gap-4">
+                {/* Header Section */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={leetcode}
+                      width={40}
+                      height={40}
+                      alt="LeetCode Logo"
+                      className="rounded-full"
+                    />
+                    <h2 className="text-md font-semibold text-gray-800 dark:text-gray-200">
+                      LeetCode
+                    </h2>
+                  </div>
+                  <h2 className="text-md text-green-500">
+                    🎖️ Global Rank : {leetCodeStats?.ranking ?? "Loading..."}
                   </h2>
                 </div>
-                <a
-                  href="https://leetcode.com/vinaypatel_nitmz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline transition"
-                >
-                  View Profile
-                </a>
-              </div>
 
-              {/* Main Content */}
-              <div className="text-gray-700 dark:text-gray-300">
-                {loading ? (
-                  <Loader2 className="animate-spin text-gray-500 dark:text-gray-400 h-[75%] w-[75%]" />
-                ) : leetCodeStats ? (
-                  <LeetCode
-                    totalQuestions={leetCodeStats.totalQuestions}
-                    totalSolved={leetCodeStats.totalSolved}
-                    easySolved={leetCodeStats.easySolved}
-                    totalEasy={leetCodeStats.totalEasy}
-                    mediumSolved={leetCodeStats.mediumSolved}
-                    totalMedium={leetCodeStats.totalMedium}
-                    hardSolved={leetCodeStats.hardSolved}
-                    totalHard={leetCodeStats.totalHard}
-                    acceptanceRate={leetCodeStats.acceptanceRate}
-                    ranking={leetCodeStats.ranking}
-                    profileLink="https://leetcode.com/vinaypatel_nitmz/"
-                  />
-                ) : (
-                  <p className="text-red-500 font-medium">
-                    Failed to load data. Please try again.
-                  </p>
-                )}
+                {/* Main Content */}
+                <div className="flex justify-center items-center text-gray-700 dark:text-gray-300">
+                  {loading ? (
+                    <Loader />
+                  ) : leetCodeStats ? (
+                    <LeetCode
+                      totalQuestions={leetCodeStats.totalQuestions}
+                      totalSolved={leetCodeStats.totalSolved}
+                      easySolved={leetCodeStats.easySolved}
+                      totalEasy={leetCodeStats.totalEasy}
+                      mediumSolved={leetCodeStats.mediumSolved}
+                      totalMedium={leetCodeStats.totalMedium}
+                      hardSolved={leetCodeStats.hardSolved}
+                      totalHard={leetCodeStats.totalHard}
+                      acceptanceRate={leetCodeStats.acceptanceRate}
+                      ranking={leetCodeStats.ranking}
+                      profileLink="https://leetcode.com/vinaypatel_nitmz/"
+                    />
+                  ) : (
+                    <p className="text-red-500 font-medium">
+                      Failed to load data. Please try again.
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* GeeksforGeeks Card */}
           <div className="lg:w-1/2 flex justify-center items-center p-5 bg-white dark:bg-gray-900 shadow-lg rounded-2xl border border-gray-300 dark:border-gray-700">
-            <div className="flex flex-col gap-4">
-              {/* Header Section */}
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={gfg}
-                    width={40}
-                    height={40}
-                    alt="gfg Logo"
-                    className="rounded-full"
-                  />
-                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    GeeksforGeeks
+            <Link
+              href="https://www.geeksforgeeks.org/user/nitianvinaypatel/"
+              target="_blank"
+              rel="noopener noreferrer"
+              passHref
+            >
+              <div className="flex flex-col gap-4">
+                {/* Header Section */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={gfg}
+                      width={40}
+                      height={40}
+                      alt="gfg Logo"
+                      className="rounded-full"
+                    />
+                    <h2 className="text-md font-semibold text-gray-800 dark:text-gray-200">
+                      GeeksforGeeks
+                    </h2>
+                  </div>
+                  <h2 className="text-md text-green-500">
+                    🎖️ Institute Rank :{" "}
+                    {gfgStats?.instituteRank ?? "Loading..."}
                   </h2>
                 </div>
-                <a
-                  href="https://leetcode.com/vinaypatel_nitmz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline transition"
-                >
-                  View Profile
-                </a>
-              </div>
 
-              {/* Main Content */}
-              <div className="text-gray-700 dark:text-gray-300">
-                {loading ? (
-                  <Loader2 className="animate-spin text-gray-500 dark:text-gray-400  h-[750%] w-[75%]" />
-                ) : gfgStats ? (
-                  <GFG
-                    totalSolved={gfgStats.totalProblemsSolved}
-                    basicSolved={gfgStats.basic}
-                    easySolved={gfgStats.easy}
-                    mediumSolved={gfgStats.medium}
-                    hardSolved={gfgStats.hard}
-                    rank={gfgStats.instituteRank}
-                    profileLink="https://leetcode.com/vinaypatel_nitmz/"
-                  />
-                ) : (
-                  <p className="text-red-500 font-medium">
-                    Failed to load data. Please try again.
-                  </p>
-                )}
+                {/* Main Content */}
+                <div className="flex justify-center items-center text-gray-700 dark:text-gray-300">
+                  {loading ? (
+                    <Loader />
+                  ) : gfgStats ? (
+                    <GFG
+                      totalSolved={gfgStats.totalProblemsSolved}
+                      basicSolved={gfgStats.basic}
+                      easySolved={gfgStats.easy}
+                      mediumSolved={gfgStats.medium}
+                      hardSolved={gfgStats.hard}
+                      rank={gfgStats.instituteRank}
+                      profileLink="https://leetcode.com/vinaypatel_nitmz/"
+                    />
+                  ) : (
+                    <p className="text-red-500 font-medium">
+                      Failed to load data. Please try again.
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </WobbleCard>

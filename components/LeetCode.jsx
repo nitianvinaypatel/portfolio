@@ -80,8 +80,8 @@ const LeetCode = ({
         colors: "#ffffff", // Set legend text color to white
       },
       formatter: function (seriesName) {
-        const { solved, total } = categoryCounts[seriesName];
-        return `${seriesName}: ${solved} / ${total}`;
+        const { solved } = categoryCounts[seriesName];
+        return `${seriesName}: ${solved}`;
       },
     },
     dataLabels: {

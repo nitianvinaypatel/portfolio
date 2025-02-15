@@ -61,7 +61,7 @@ const GFG = ({
             total: {
               show: true,
               label: "",
-              formatter: () => `${totalSolved}`,
+              formatter: () => `${totalSolved}/3570`,
             },
           },
         },
