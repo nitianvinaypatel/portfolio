@@ -100,20 +100,20 @@ export function WobbleCardDemo() {
             >
               <div className="flex flex-col  gap-4">
                 {/* Header Section */}
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
+                <div className="flex justify-between items-center gap-5">
+                  <div className="flex items-center gap-1 ">
                     <Image
                       src={leetcode}
-                      width={40}
-                      height={40}
+                      width={30}
+                      height={30}
                       alt="LeetCode Logo"
                       className="rounded-full"
                     />
-                    <h2 className="text-md font-semibold text-gray-800 dark:text-gray-200">
+                    <h2 className="text-sm lg:text-md font-semibold text-gray-800 dark:text-gray-200">
                       LeetCode
                     </h2>
                   </div>
-                  <h2 className="text-md text-green-500">
+                  <h2 className="text-sm lg:text-md text-green-500">
                     🎖️ Global Rank : {leetCodeStats?.ranking ?? "Loading..."}
                   </h2>
                 </div>
@@ -156,20 +156,20 @@ export function WobbleCardDemo() {
             >
               <div className="flex flex-col gap-4">
                 {/* Header Section */}
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
+                <div className="flex justify-between items-center gap-4">
+                  <div className="flex items-center gap-1">
                     <Image
                       src={gfg}
-                      width={40}
-                      height={40}
+                      width={30}
+                      height={30}
                       alt="gfg Logo"
                       className="rounded-full"
                     />
-                    <h2 className="text-md font-semibold text-gray-800 dark:text-gray-200">
+                    <h2 className="text-sm lg:text-md font-semibold text-gray-800 dark:text-gray-200">
                       GeeksforGeeks
                     </h2>
                   </div>
-                  <h2 className="text-md text-green-500">
+                  <h2 className="text-sm lg:text-md text-green-500">
                     🎖️ Institute Rank :{" "}
                     {gfgStats?.instituteRank ?? "Loading..."}
                   </h2>
