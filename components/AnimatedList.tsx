@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatedList } from "@/components/ui/animated-list";
-import { BorderBeam } from "./ui/border-beam";
+import { motion } from "framer-motion";
 
 interface Item {
   name: string;
@@ -10,6 +10,8 @@ interface Item {
   icon: string;
   color: string;
   time: string;
+  link?: string;
+  tags?: string[];
 }
 
 let notifications = [
@@ -19,6 +21,8 @@ let notifications = [
     time: "June 2024",
     icon: "💸",
     color: "#00C9A7",
+    tags: ["Internship", "Development"],
+    link: "#",
   },
   {
     name: "Rank 1 in Software Development Hackathon",
@@ -26,6 +30,8 @@ let notifications = [
     time: "April 2024",
     icon: "👤",
     color: "#FFB800",
+    tags: ["Hackathon", "Achievement"],
+    link: "#",
   },
   {
     name: "Selected as a GDG lead NIT Mizoram",
@@ -33,6 +39,8 @@ let notifications = [
     time: "October 2024",
     icon: "💬",
     color: "#FF3D71",
+    tags: ["Leadership", "Community"],
+    link: "#",
   },
   {
     name: "Deployed the NIT-MZ Student App on Play Store",
@@ -40,52 +48,77 @@ let notifications = [
     time: "Feb 2024",
     icon: "🗞️",
     color: "#1E86FF",
+    tags: ["Mobile", "Development"],
+    link: "#",
   },
 ];
 
 notifications = Array.from({ length: 10 }, () => notifications).flat();
 
-const Notification = ({ name, description, icon, color, time }: Item) => {
+const Notification = ({
+  name,
+  description,
+  icon,
+  color,
+  time,
+  tags,
+  link,
+}: Item) => {
   return (
-    <figure
+    <motion.figure
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={cn(
-        "relative mx-auto min-h-fit w-full max-w-[600px] cursor-pointer overflow-hidden rounded-2xl p-6", // Increased max width and padding
-        // animation styles
-        "transition-all duration-300 ease-in-out hover:scale-[105%]", // Increased scale on hover
-        // light styles
-        "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        // dark styles
-        "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]"
+        "group relative mx-auto min-h-fit w-full max-w-[600px] cursor-pointer overflow-hidden rounded-2xl p-6",
+        "transition-all duration-300 ease-out",
+        "border border-gray-100 dark:border-gray-800",
+        "hover:border-gray-200 dark:hover:border-gray-700",
+        "shadow-sm hover:shadow-md dark:shadow-none",
+        link && "hover:shadow-lg"
       )}
+      onClick={() => link && window.open(link, "_blank")}
     >
-      <BorderBeam />
-      <div className="flex flex-row items-center gap-4">
-        {/* Icon Section */}
-        <div
-          className="flex size-10 items-center justify-center rounded-2xl" // Increased icon size
-          style={{
-            backgroundColor: color,
-          }}
-        >
-          <span className="text-xs sm:text-lg lg:text-lg">{icon}</span>{" "}
-          {/* Smaller icon text */}
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col gap-4">
+        {/* Header */}
+        <div className="flex items-start gap-4">
+          {/* Icon */}
+          <div
+            className="flex size-12 shrink-0 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
+            style={{
+              border: `1.5px solid ${color}`,
+            }}
+          >
+            <span className="text-xl">{icon}</span>
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col gap-1 overflow-hidden">
+            <h3 className="font-bold leading-tight text-gray-900 dark:text-white">
+              {name}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              {description}
+            </p>
+            <time className="text-xs text-gray-500">{time}</time>
+          </div>
         </div>
 
-        {/* Text Section */}
-        <div className="flex flex-col overflow-hidden">
-          <span className="text-xs sm:text-lg md:text-lg lg:text-lg font-bold">
-            {name}
-          </span>{" "}
-          <p className="text-[8px] sm:text-base font-normal dark:text-white/80 lg:text-base">
-            {/* Small description text */}
-            {description}
-          </p>
-          <span className="text-[8px] sm:text-sm text-gray-500 lg:text-sm">
-            {time}
-          </span>{" "}
-        </div>
+        {/* Tags */}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, index) => (
+              <span
+                key={index}
+                className="rounded-full border border-gray-200 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
-    </figure>
+    </motion.figure>
   );
 };
 
@@ -93,11 +126,11 @@ export function AnimatedListDemo({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex h-[450px] lg:h-[550px] w-full flex-col p-1 overflow-hidden rounded-lg md:shadow-xl",
+        "relative flex h-[450px] lg:h-[550px] w-full flex-col overflow-hidden rounded-lg p-4",
         className
       )}
     >
-      <AnimatedList>
+      <AnimatedList delay={2000}>
         {notifications.map((item, idx) => (
           <Notification {...item} key={idx} />
         ))}

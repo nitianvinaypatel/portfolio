@@ -16,6 +16,7 @@ import { AnimatedTestimonialsDemo } from "@/components/Testimonials";
 import ProjectCard from "@/components/ProjectCard";
 import { WobbleCardDemo } from "@/components/WobbleCard";
 import About from "@/components/About";
+import Skills from "@/components/Skills";
 
 const Home = () => {
   return (
@@ -25,12 +26,12 @@ const Home = () => {
         <Hero />
         <About />
         <Experience />
+        <Skills />
         {/* <WobbleCardDemo /> */}
         <Achievement />
         <Education />
         {/* <Grid /> */}
         <ProjectCard />
-        {/* <RecentProjects /> */}
         {/* <TimelineDemo /> */}
         <AnimatedTestimonialsDemo />
         <Footer />

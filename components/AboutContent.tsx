@@ -33,11 +33,14 @@ function AboutContent() {
           <p className="mt-2 text-sm leading-loose lg:w-[50%]">
             Welcome to my portfolio! I specialize in Mobile App Development in
             React Native and Back-End development with Node.js and Front-End
-            with React.js. I’ve worked on projects like{" "}
-            <span className="text-green-500">NIT-MZ Student App</span> and{" "}
-            <span className="text-green-500">Taxi Booking App</span>. I’m
-            passionate about learning new technologies and building impactful
-            solutions.
+            with React.js. I&apos;ve worked on projects like{" "}
+            <span className="text-green-500">NIT-MZ Student App</span> and a{" "}
+            <span className="text-green-500">LinkedIn Backend</span>. Currently
+            designing a{" "}
+            <span className="text-green-500">Check Gate Monitoring System</span>{" "}
+            for Mizoram Police with ANPR integration for real-time vehicle
+            tracking and database management. I&apos;m passionate about creating
+            elegant, impactful solutions.
           </p>
         </div>
       </div>

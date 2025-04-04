@@ -31,6 +31,18 @@ const nextConfig = {
         protocol: "https",
         hostname: "media.geeksforgeeks.org",
       },
+      {
+        protocol: "https",
+        hostname: "media.licdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "www.geeksforgeeks.org",
+      },
     ],
   },
 };
