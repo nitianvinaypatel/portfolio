@@ -458,12 +458,12 @@ const ExperienceCard = ({
             </div>
 
             {/* Stats Grid */}
-            <motion.div
+            {/* <motion.div
               variants={itemVariants}
               className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6"
             >
               {getStatCards}
-            </motion.div>
+            </motion.div> */}
 
             {/* Responsibilities */}
             <motion.div className="mt-6" variants={itemVariants}>
