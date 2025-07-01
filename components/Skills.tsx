@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
+"use client";
+
+import React, { useState, useRef, useEffect } from "react";
+import {
+  motion,
+  useInView,
+  useAnimation,
+  AnimatePresence,
+} from "framer-motion";
 import {
   FaCode,
   FaServer,
   FaMobile,
   FaTools,
   FaReact,
-  FaAws,
   FaJava,
   FaPython,
-  FaNode,
   FaDatabase,
   FaGithub,
   FaTerminal,
@@ -25,13 +29,8 @@ import {
   SiNodedotjs,
   SiPython,
   SiMongodb,
-  SiPostgresql,
   SiAndroid,
-  SiFlutter,
-  SiSwift,
   SiGit,
-  SiDocker,
-  SiTensorflow,
   SiCplusplus,
   SiC,
   SiHtml5,
@@ -45,10 +44,10 @@ import {
   SiNumpy,
   SiPandas,
   SiRedux,
-  SiAxios,
   SiFigma,
 } from "react-icons/si";
 import { BiNetworkChart } from "react-icons/bi";
+import { HiCode } from "react-icons/hi";
 
 interface Skill {
   name: string;
@@ -81,7 +80,7 @@ const skillCategories: SkillCategory[] = [
           "Modern JavaScript including ES6+ features and async programming",
         mastery: "Expert",
         projects: 10,
-        yearsOfExperience: 1,
+        yearsOfExperience: 2,
       },
       {
         name: "TypeScript",
@@ -94,11 +93,11 @@ const skillCategories: SkillCategory[] = [
       },
       {
         name: "Python",
-        icon: FaPython,
+        icon: SiPython,
         color: "#3776AB",
         description: "Python for backend development and data science",
         mastery: "Advanced",
-        projects: 2,
+        projects: 3,
         yearsOfExperience: 1,
       },
       {
@@ -116,7 +115,7 @@ const skillCategories: SkillCategory[] = [
         color: "#00599C",
         description: "Systems programming and algorithm implementation",
         mastery: "Intermediate",
-        projects: 1,
+        projects: 2,
         yearsOfExperience: 1,
       },
       {
@@ -141,8 +140,8 @@ const skillCategories: SkillCategory[] = [
         color: "#61DAFB",
         description: "Component-based UI development with React ecosystem",
         mastery: "Expert",
-        projects: 7,
-        yearsOfExperience: 1,
+        projects: 10,
+        yearsOfExperience: 2,
       },
       {
         name: "Next.js",
@@ -154,13 +153,22 @@ const skillCategories: SkillCategory[] = [
         yearsOfExperience: 1,
       },
       {
+        name: "React Native",
+        icon: SiReact,
+        color: "#61DAFB",
+        description: "Cross-platform mobile development with React Native",
+        mastery: "Advanced",
+        projects: 7,
+        yearsOfExperience: 1,
+      },
+      {
         name: "HTML5",
         icon: SiHtml5,
         color: "#E34F26",
         description: "Semantic HTML and web accessibility",
         mastery: "Expert",
-        projects: 5,
-        yearsOfExperience: 1,
+        projects: 12,
+        yearsOfExperience: 2,
       },
       {
         name: "CSS3",
@@ -168,8 +176,8 @@ const skillCategories: SkillCategory[] = [
         color: "#1572B6",
         description: "Modern CSS including Flexbox and Grid",
         mastery: "Expert",
-        projects: 5,
-        yearsOfExperience: 1,
+        projects: 12,
+        yearsOfExperience: 2,
       },
       {
         name: "Tailwind CSS",
@@ -178,58 +186,6 @@ const skillCategories: SkillCategory[] = [
         description: "Utility-first CSS framework for rapid development",
         mastery: "Expert",
         projects: 8,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Redux",
-        icon: SiRedux,
-        color: "#764ABC",
-        description: "State management for React applications",
-        mastery: "Advanced",
-        projects: 6,
-        yearsOfExperience: 1,
-      },
-    ],
-  },
-  {
-    name: "Mobile Development",
-    icon: FaMobile,
-    description: "Cross-platform and native mobile app development",
-    skills: [
-      {
-        name: "React Native",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Cross-platform mobile development with React Native",
-        mastery: "Advanced",
-        projects: 7,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Android (Java)",
-        icon: SiAndroid,
-        color: "#3DDC84",
-        description: "Native Android development with Java",
-        mastery: "Advanced",
-        projects: 2,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Firebase",
-        icon: SiFirebase,
-        color: "#FFCA28",
-        description: "Mobile backend and authentication",
-        mastery: "Advanced",
-        projects: 3,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Android Studio",
-        icon: SiAndroidstudio,
-        color: "#3DDC84",
-        description: "Android IDE and development tools",
-        mastery: "Advanced",
-        projects: 1,
         yearsOfExperience: 1,
       },
     ],
@@ -245,7 +201,7 @@ const skillCategories: SkillCategory[] = [
         color: "#339933",
         description: "Server-side JavaScript runtime",
         mastery: "Advanced",
-        projects: 6,
+        projects: 8,
         yearsOfExperience: 1,
       },
       {
@@ -254,7 +210,7 @@ const skillCategories: SkillCategory[] = [
         color: "#000000",
         description: "Web application framework for Node.js",
         mastery: "Advanced",
-        projects: 6,
+        projects: 8,
         yearsOfExperience: 1,
       },
       {
@@ -263,7 +219,7 @@ const skillCategories: SkillCategory[] = [
         color: "#FF6C37",
         description: "API design and implementation",
         mastery: "Expert",
-        projects: 7,
+        projects: 10,
         yearsOfExperience: 1,
       },
       {
@@ -272,7 +228,7 @@ const skillCategories: SkillCategory[] = [
         color: "#010101",
         description: "Real-time bidirectional communication",
         mastery: "Intermediate",
-        projects: 1,
+        projects: 2,
         yearsOfExperience: 1,
       },
     ],
@@ -288,7 +244,7 @@ const skillCategories: SkillCategory[] = [
         color: "#47A248",
         description: "NoSQL database design and optimization",
         mastery: "Advanced",
-        projects: 6,
+        projects: 8,
         yearsOfExperience: 1,
       },
       {
@@ -297,7 +253,7 @@ const skillCategories: SkillCategory[] = [
         color: "#4479A1",
         description: "Relational database management",
         mastery: "Advanced",
-        projects: 1,
+        projects: 3,
         yearsOfExperience: 1,
       },
       {
@@ -306,7 +262,7 @@ const skillCategories: SkillCategory[] = [
         color: "#FFCA28",
         description: "Real-time database and cloud functions",
         mastery: "Advanced",
-        projects: 2,
+        projects: 5,
         yearsOfExperience: 1,
       },
       {
@@ -331,8 +287,8 @@ const skillCategories: SkillCategory[] = [
         color: "#F05032",
         description: "Version control and collaboration",
         mastery: "Expert",
-        projects: 16,
-        yearsOfExperience: 1,
+        projects: 20,
+        yearsOfExperience: 2,
       },
       {
         name: "GitHub",
@@ -340,8 +296,8 @@ const skillCategories: SkillCategory[] = [
         color: "#181717",
         description: "Project hosting and collaboration",
         mastery: "Expert",
-        projects: 16,
-        yearsOfExperience: 1,
+        projects: 20,
+        yearsOfExperience: 2,
       },
       {
         name: "VS Code",
@@ -349,7 +305,7 @@ const skillCategories: SkillCategory[] = [
         color: "#007ACC",
         description: "Primary code editor and IDE",
         mastery: "Expert",
-        projects: 20,
+        projects: 25,
         yearsOfExperience: 2,
       },
       {
@@ -358,146 +314,140 @@ const skillCategories: SkillCategory[] = [
         color: "#FF6C37",
         description: "API testing and documentation",
         mastery: "Advanced",
-        projects: 8,
-        yearsOfExperience: 1,
-      },
-    ],
-  },
-  {
-    name: "Data Science & UI/UX",
-    icon: FaTools,
-    description: "Data analysis and design tools",
-    skills: [
-      {
-        name: "NumPy",
-        icon: SiNumpy,
-        color: "#013243",
-        description: "Numerical computing with Python",
-        mastery: "Intermediate",
-        projects: 1,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Pandas",
-        icon: SiPandas,
-        color: "#150458",
-        description: "Data manipulation and analysis",
-        mastery: "Intermediate",
-        projects: 1,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Data Visualization",
-        icon: FaChartBar,
-        color: "#4C72B0",
-        description:
-          "Statistical data visualization with Seaborn and other tools",
-        mastery: "Intermediate",
-        projects: 1,
-        yearsOfExperience: 1,
-      },
-      {
-        name: "Figma",
-        icon: SiFigma,
-        color: "#F24E1E",
-        description: "UI/UX design and prototyping",
-        mastery: "Intermediate",
-        projects: 1,
+        projects: 10,
         yearsOfExperience: 1,
       },
     ],
   },
 ];
 
-const SkillCard = ({ skill }: { skill: Skill }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
+  const [showDetails, setShowDetails] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-50px 0px" });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.05,
+        ease: "easeOut",
+      },
+    },
+  };
 
   const masteryColors = {
-    Beginner: "border-blue-500 text-blue-500",
-    Intermediate: "border-green-500 text-green-500",
-    Advanced: "border-purple-500 text-purple-500",
-    Expert: "border-orange-500 text-orange-500",
+    Beginner: {
+      bg: "bg-blue-500/20",
+      text: "text-blue-400",
+      border: "border-blue-500/30",
+    },
+    Intermediate: {
+      bg: "bg-green-500/20",
+      text: "text-green-400",
+      border: "border-green-500/30",
+    },
+    Advanced: {
+      bg: "bg-purple-500/20",
+      text: "text-purple-400",
+      border: "border-purple-500/30",
+    },
+    Expert: {
+      bg: "bg-orange-500/20",
+      text: "text-orange-400",
+      border: "border-orange-500/30",
+    },
   };
+
+  const masteryLevel = Math.ceil((skill.yearsOfExperience / 2) * 5);
 
   return (
     <motion.div
-      className="relative group"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
+      ref={cardRef}
+      variants={cardVariants}
+      initial="hidden"
+      animate={controls}
+      className="group"
     >
-      <div className="relative overflow-hidden rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700 p-6 hover:border-orange-500 dark:hover:border-orange-500 transition-all duration-300">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-pink-500/5 dark:from-orange-500/10 dark:to-pink-500/10" />
+      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/8 hover:border-white/20 transition-all duration-300">
+        {/* Skill Header */}
+        <div className="flex items-center gap-3 mb-3">
+          <div
+            className="w-12 h-12 rounded-lg flex items-center justify-center border border-white/20"
+            style={{ backgroundColor: `${skill.color}20` }}
+          >
+            <skill.icon className="text-xl" style={{ color: skill.color }} />
+          </div>
 
-        <div className="relative flex items-start justify-between mb-4">
-          <div className="flex items-center gap-4">
-            <div className="p-2 rounded-lg border border-gray-200 dark:border-gray-700">
-              <skill.icon className="text-3xl" style={{ color: skill.color }} />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                {skill.name}
-              </h3>
+          <div className="flex-1">
+            <h3 className="text-white font-semibold text-sm">{skill.name}</h3>
+            <div className="flex items-center gap-2 mt-1">
               <span
-                className={`text-sm px-3 py-1 rounded-full border ${
-                  masteryColors[skill.mastery]
+                className={`px-2 py-0.5 rounded-full text-xs border ${
+                  masteryColors[skill.mastery].bg
+                } ${masteryColors[skill.mastery].text} ${
+                  masteryColors[skill.mastery].border
                 }`}
               >
                 {skill.mastery}
+              </span>
+              <span className="text-gray-400 text-xs">
+                {skill.projects} projects
               </span>
             </div>
           </div>
         </div>
 
+        {/* Skill Progress Bar */}
+        <div className="mb-3">
+          <div className="flex justify-between text-xs text-gray-400 mb-1">
+            <span>Proficiency</span>
+            <span>{skill.yearsOfExperience} years</span>
+          </div>
+          <div className="w-full bg-gray-700/50 rounded-full h-2">
+            <motion.div
+              className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+              initial={{ width: 0 }}
+              animate={
+                isInView
+                  ? { width: `${Math.min(masteryLevel * 20, 100)}%` }
+                  : { width: 0 }
+              }
+              transition={{ duration: 1, delay: index * 0.1 }}
+            />
+          </div>
+        </div>
+
+        {/* Expandable Description */}
+        <button
+          onClick={() => setShowDetails(!showDetails)}
+          className="text-blue-400 hover:text-blue-300 text-xs font-medium transition-colors w-full text-left"
+        >
+          {showDetails ? "Hide Details" : "View Details"}
+        </button>
+
         <AnimatePresence>
-          {isHovered && (
+          {showDetails && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="space-y-4"
+              transition={{ duration: 0.3 }}
+              className="mt-3 pt-3 border-t border-white/10 overflow-hidden"
             >
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-300 text-xs leading-relaxed">
                 {skill.description}
               </p>
-
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500 dark:text-gray-400">
-                    Projects:
-                  </span>
-                  <span className="font-medium text-gray-900 dark:text-white">
-                    {skill.projects}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500 dark:text-gray-400">
-                    Experience:
-                  </span>
-                  <span className="font-medium text-gray-900 dark:text-white">
-                    {skill.yearsOfExperience} years
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className={`h-1 flex-1 rounded-full ${
-                      i < Math.ceil(skill.yearsOfExperience)
-                        ? "bg-gradient-to-r from-orange-500 to-pink-500"
-                        : "bg-gray-200 dark:bg-gray-700"
-                    }`}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                  />
-                ))}
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -506,69 +456,122 @@ const SkillCard = ({ skill }: { skill: Skill }) => {
   );
 };
 
-const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+const Skills: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>(
     "Frontend Development"
   );
 
   return (
-    <section ref={ref} className="py-20" id="skills">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-transparent" id="skills">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-            Technical Expertise
+          <div className="inline-block mb-4 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full">
+            <span className="text-sm font-medium text-blue-400 flex items-center gap-2">
+              <HiCode className="text-sm" />
+              Technical Skills
+            </span>
+          </div>
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+            Skills & Technologies
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Mastering modern technologies to create innovative solutions
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            A comprehensive overview of my technical expertise and proficiency
+            across various technologies
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Category Filters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <motion.button
+              <button
                 key={category.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setSelectedCategory(category.name)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 text-sm ${
                   selectedCategory === category.name
-                    ? "border-orange-500 text-orange-500 shadow-lg scale-105"
-                    : "border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-orange-500 hover:text-orange-500"
+                    ? "border-purple-500 bg-purple-500/20 text-purple-400"
+                    : "border-white/20 text-gray-400 hover:border-purple-500/50 hover:text-purple-400"
                 }`}
               >
-                <Icon className="text-xl" />
+                <Icon className="text-sm" />
                 <span className="font-medium">{category.name}</span>
-              </motion.button>
+              </button>
             );
           })}
-        </div>
+        </motion.div>
 
+        {/* Skills Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
           >
-            {skillCategories
-              .find((cat) => cat.name === selectedCategory)
-              ?.skills.map((skill) => (
-                <SkillCard key={skill.name} skill={skill} />
-              ))}
+            {/* Category Description */}
+            <div className="text-center mb-8">
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                {
+                  skillCategories.find((cat) => cat.name === selectedCategory)
+                    ?.description
+                }
+              </p>
+            </div>
+
+            {/* Skills Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {skillCategories
+                .find((cat) => cat.name === selectedCategory)
+                ?.skills.map((skill, index) => (
+                  <SkillCard key={skill.name} skill={skill} index={index} />
+                ))}
+            </div>
           </motion.div>
         </AnimatePresence>
+
+        {/* Skills Summary */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: "Languages", value: "6+", icon: <FaCode /> },
+              { label: "Frameworks", value: "10+", icon: <FaReact /> },
+              { label: "Databases", value: "4+", icon: <FaDatabase /> },
+              { label: "Tools", value: "15+", icon: <FaTools /> },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="p-4 bg-white/5 rounded-lg border border-white/10"
+              >
+                <div className="text-purple-400 text-2xl mb-2 flex justify-center">
+                  {stat.icon}
+                </div>
+                <div className="text-white text-xl font-bold">{stat.value}</div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

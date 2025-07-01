@@ -43,6 +43,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.geeksforgeeks.org",
       },
+      {
+        protocol: "https",
+        hostname: "www.peppyocean.com",
+      },
     ],
   },
 };

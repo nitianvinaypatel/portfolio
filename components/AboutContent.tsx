@@ -31,16 +31,25 @@ function AboutContent() {
             </div>
           </h2>
           <p className="mt-2 text-sm leading-loose lg:w-[50%]">
-            Welcome to my portfolio! I specialize in Mobile App Development in
-            React Native and Back-End development with Node.js and Front-End
-            with React.js. I&apos;ve worked on projects like{" "}
-            <span className="text-green-500">NIT-MZ Student App</span> and a{" "}
-            <span className="text-green-500">LinkedIn Backend</span>. Currently
-            designing a{" "}
-            <span className="text-green-500">Check Gate Monitoring System</span>{" "}
-            for Mizoram Police with ANPR integration for real-time vehicle
-            tracking and database management. I&apos;m passionate about creating
-            elegant, impactful solutions.
+            Welcome to my portfolio! I&apos;m a{" "}
+            <span className="text-blue-500">CSE student at NIT Mizoram</span>{" "}
+            specializing in
+            <span className="text-orange-500"> React Native</span>,{" "}
+            <span className="text-blue-500">React.js</span>, and
+            <span className="text-green-500"> Node.js</span> development.
+            Currently working as an intern at
+            <span className="text-emerald-500"> Dashwave</span> and{" "}
+            <span className="text-purple-500"> DevOrbital</span>. I&apos;ve
+            built projects like the{" "}
+            <span className="text-green-500">NIT-MZ Student App</span> (on Play
+            Store),
+            <span className="text-green-500">LinkedIn Backend</span>, and{" "}
+            <span className="text-green-500">Check Gate Monitoring System</span>
+            for Mizoram Police. <span className="text-yellow-500">
+              Rank 1
+            </span>{" "}
+            winner at Hackventure 2.0 and
+            <span className="text-blue-500"> GDG Lead</span> at NIT Mizoram.
           </p>
         </div>
       </div>
