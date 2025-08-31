@@ -57,7 +57,7 @@ const experienceData: Experience[] = [
     id: 1,
     role: "Software Developer Intern",
     company: "DevOrbital",
-    duration: "April 2025 - Present",
+    duration: "April 2025 - June 2025",
     location: "Remote",
     type: "Internship",
     responsibilities: [

@@ -27,50 +27,76 @@ const ProjectCard: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028",
+      title: "Hostel Management System",
+      image:
+        "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
       description:
-        "A modern e-commerce solution with React and Node.js, powered by MongoDB and Express",
+        "Comprehensive hostel management system for efficient administration and student services.",
       longDescription:
-        "Full-featured e-commerce platform with real-time inventory management, secure payment processing, and advanced analytics dashboard. Implements modern security practices and optimized for performance.",
+        "A complete hostel management solution developed as a final year project to streamline hostel operations. Features include student registration and room allocation, fee management with payment tracking, complaint management system, visitor management with entry/exit logs, mess management with meal planning, attendance tracking, and administrative dashboard with detailed analytics. Built with modern web technologies to provide a seamless experience for both students and hostel administrators.",
       techStack: [
         "React",
         "Node.js",
+        "Express.js",
         "MongoDB",
-        "Express",
         "Tailwind CSS",
-        "Redux",
-        "Stripe",
+        "JWT Authentication",
       ],
       category: "Web App",
-      liveLink: "https://github.com/nitianvinaypatel/e-commerce-platform",
-      githubLink: "https://github.com/nitianvinaypatel/e-commerce-platform",
-      status: "Completed",
-      completionDate: "2024-02",
+      liveLink: "https://github.com/nitianvinaypatel/hostel-management-system",
+      githubLink:
+        "https://github.com/nitianvinaypatel/hostel-management-system",
+      status: "In Progress",
+      completionDate: "2025-12",
     },
     {
       id: 2,
-      title: "Task Management App",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      title: "Water Tanker Verification System",
+      image:
+        "https://raw.githubusercontent.com/mazipan/bootstrap4-admin-dashboard-template/master/screenshoot.png",
       description:
-        "Comprehensive task management solution, built with React, Firebase, and Tailwind CSS for a seamless user experience.",
+        "Full-stack web app to digitize hostel water tanker delivery verification with GPS, uploads, and role-based authentication.",
       longDescription:
-        "Enterprise-grade task management system featuring real-time collaboration, automated workflows, and detailed analytics. Includes integrations with popular productivity tools.",
+        "Developed a full-stack Next.js 14 + TypeScript + Appwrite application to modernize water tanker delivery verification. Features include GPS capture, multimedia uploads, role-based authentication, and an admin dashboard with approval workflows, real-time statistics, image gallery previews, and advanced filtering for efficient delivery management.",
       techStack: [
+        "Next.js 14",
         "React",
-        "Firebase",
-        "Tailwind CSS",
-        "React Query",
         "TypeScript",
+        "Appwrite",
+        "Tailwind CSS",
       ],
       category: "Web App",
-      liveLink: "https://github.com/nitianvinaypatel/todox",
-      githubLink: "https://github.com/nitianvinaypatel/todox",
-      status: "Maintenance",
-      completionDate: "2023-11",
+      liveLink:
+        "https://github.com/nitianvinaypatel/hostel-water-tanker-verification",
+      githubLink:
+        "https://github.com/nitianvinaypatel/hostel-water-tanker-verification",
+      status: "Completed",
+      completionDate: "2025-07",
     },
     {
       id: 3,
+      title: "Digiride e-Transport",
+      image:
+        "https://play-lh.googleusercontent.com/1ZBXOCln6LDm2S1qmVuWKZ-dmKn1QWjYo7c6D5YY4vcEV4Oo5x3lpVZT_of3IiGd67g=w416-h235-rw",
+      description:
+        "React Native + Expo MVP enabling OTP login, ride booking, real-time tracking, and route visualization.",
+      longDescription:
+        "Built a mobile-first MVP for e-transport using React Native and Expo. Core features include phone OTP authentication, pickup/drop location selection with Google Maps API, ride option selection, and real-time route visualization with MapViewDirections. Implemented Redux Toolkit for ride state management, Tailwind CSS for UI, Socket.io for real-time communication, and Axios/AsyncStorage for simulated API calls with local storage support.",
+      techStack: [
+        "React Native",
+        "Tailwind CSS",
+        "Socket.io",
+        "Redux Toolkit",
+        "i18n",
+      ],
+      category: "Mobile App",
+      liveLink: "https://github.com/nitianvinaypatel/digiride-e-transport",
+      githubLink: "https://github.com/nitianvinaypatel/digiride-e-transport",
+      status: "Completed",
+      completionDate: "2025-01",
+    },
+    {
+      id: 4,
       title: "NIT-MZ Student App",
       image:
         "https://play-lh.googleusercontent.com/y-wBMroYPPB6UzUWX8U65BZMpiM86Oft1SNo9yUhKnLWe-bbbw3GeRK1jZ8m7RNKmQ=w416-h235-rw",
@@ -93,63 +119,43 @@ const ProjectCard: React.FC = () => {
       completionDate: "2023-09",
     },
     {
-      id: 4,
-      title: "AI-Powered Code Assistant",
-      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb",
-      description:
-        "Advanced code analysis and suggestion tool powered by machine learning",
-      longDescription:
-        "Innovative code assistant that uses AI to analyze code quality, suggest improvements, and detect potential bugs. Features real-time suggestions and integration with major IDEs.",
-      techStack: [
-        "Python",
-        "TensorFlow",
-        "FastAPI",
-        "Docker",
-        "PostgreSQL",
-        "React",
-      ],
-      category: "Developer Tools",
-      liveLink: "https://github.com/nitianvinaypatel/ai-code-assistant",
-      githubLink: "https://github.com/nitianvinaypatel/ai-code-assistant",
-      status: "In Progress",
-      completionDate: "2024-03",
-    },
-    {
       id: 5,
-      title: "Real-time Analytics Dashboard",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      title: "Media Dost - Advertising Platform",
+      image:
+        "https://www.mediadost.com/admin/uploads/blogs/6804f8dc3bc36-Untitled%20-%202025-04-20T190734.441.png",
       description:
-        "Modern analytics platform with real-time data visualization",
+        "Comprehensive advertising and media services platform for strategic marketing solutions",
       longDescription:
-        "Enterprise analytics dashboard providing real-time insights through interactive charts and customizable widgets. Features machine learning-powered predictions and automated reporting.",
-      techStack: ["Next.js", "D3.js", "WebSocket", "Redis", "Python", "AWS"],
+        "Media Dost is a modern advertising platform that offers strategic advertising solutions with a wide range of media options including outdoor, influencer marketing, digital PR, radio, television, and more. Features seamless booking experience with advanced filters, maps, transparent pricing, and expert media planning services. The platform connects businesses with various advertising mediums to maximize their reach and impact.",
+      techStack: [
+        "React",
+        "Tailwind CSS",
+        "Next.js",
+        "TypeScript",
+        "Vercel",
+        "Web APIs",
+      ],
       category: "Web App",
-      liveLink: "https://github.com/nitianvinaypatel/analytics-dashboard",
-      githubLink: "https://github.com/nitianvinaypatel/analytics-dashboard",
+      liveLink: "https://media-dost.vercel.app/",
+      githubLink: "https://github.com/nitianvinaypatel/media-dost",
       status: "Completed",
-      completionDate: "2024-01",
+      completionDate: "2025-06",
     },
     {
       id: 6,
-      title: "Blockchain-based Supply Chain",
-      image: "https://images.unsplash.com/photo-1639322537228-f710d846310a",
+      title: "GDG NIT Mizoram - Developer Community",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5622AQG_YFTBteFbdg/feedshare-shrink_800/feedshare-shrink_800/0/1732521326639?e=1759363200&v=beta&t=ewe6fStcUmwyfOhdfys-Fq1pPr6IMQ7QuWBKMElIiIY",
       description:
-        "Decentralized supply chain management system using blockchain",
+        "Official website for Google Developer Group at NIT Mizoram fostering tech community",
       longDescription:
-        "Revolutionary supply chain management system leveraging blockchain technology for transparency and traceability. Includes smart contracts for automated compliance and real-time tracking.",
-      techStack: [
-        "Solidity",
-        "Ethereum",
-        "React",
-        "Node.js",
-        "Web3.js",
-        "IPFS",
-      ],
-      category: "Blockchain",
-      liveLink: "https://github.com/nitianvinaypatel/blockchain-supply-chain",
-      githubLink: "https://github.com/nitianvinaypatel/blockchain-supply-chain",
-      status: "In Progress",
-      completionDate: "2024-04",
+        "GDG NIT Mizoram is the official Google Developer Group chapter at National Institute of Technology, Mizoram. The website serves as a hub for the developer community, featuring upcoming tech events, workshops, hackathons, and educational resources. It connects students and professionals interested in Google technologies, providing a platform for knowledge sharing, collaboration, and skill development in various domains like Android, Web, Cloud, AI/ML, and more.",
+      techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+      category: "Web App",
+      liveLink: "https://gdg-nitmizoram.vercel.app/",
+      githubLink: "https://github.com/nitianvinaypatel/gdg-nitmizoram",
+      status: "Completed",
+      completionDate: "2024-12",
     },
   ];
 

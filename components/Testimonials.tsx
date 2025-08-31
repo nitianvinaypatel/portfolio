@@ -4,38 +4,31 @@ export function AnimatedTestimonialsDemo() {
   const testimonials = [
     {
       quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
-      designation: "Product Manager at TechFlow",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Vinay has been instrumental in redesigning our Trifit fitness app. His React Native expertise and attention to UI/UX details have significantly improved user engagement. His collaboration with our backend team has been seamless.",
+      name: "Yash Khandelwal",
+      designation: "Co-Founder, Dashwave.io",
+      src: "https://media.licdn.com/dms/image/v2/D5603AQFvQArzhaf9dg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720725113074?e=1759363200&v=beta&t=loP0H3B_BdAryd_0zzC_tMS1tpcnfttHwd6B8ryrQ4E",
     },
     {
       quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Michael Rodriguez",
-      designation: "CTO at InnovateSphere",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "During his internship at DevOrbital, Vinay consistently delivered high-quality code across multiple client projects. His proficiency in React Native, React.js, and the MERN stack made him an invaluable team member.",
+      name: "Partha Sarathi Ghosh",
+      designation: "Founder, DevOrbital",
+      src: "https://media.licdn.com/dms/image/v2/D5603AQG-M894MEWaDw/profile-displayphoto-shrink_400_400/B56ZYqEbfEGcAk-/0/1744462527121?e=1759363200&v=beta&t=KdgKaA35YxQR9PXfL-tk-ALYbf62Pe9LuOCp2yrZLq8",
     },
     {
       quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Emily Watson",
-      designation: "Operations Director at CloudScale",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Vinay's work on the DigiRide project was exceptional. His development of both the Rider App and Admin Dashboard showcased excellent technical skills in React Native and Next.js. The 30% latency reduction he achieved was impressive.",
+      name: "	Dr. Lalhruaizela",
+      designation: "Professor, NIT Mizoram",
+      src: "https://nitmz.ac.in/ImageGenerator.aspx?imgID=200420&command=profile_pic&w=100&h=100",
     },
     {
       quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "James Kim",
-      designation: "Engineering Lead at DataPro",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Lisa Thompson",
-      designation: "VP of Technology at FutureNet",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "During his 2-month internship with us, Vinay demonstrated strong technical skills in React.js and Node.js. His problem-solving abilities and adaptability while working on web applications were remarkable for someone so early in their career.",
+      name: "Balaji Mishra",
+      designation: "Founder, Software Giant",
+      src: "https://media.licdn.com/dms/image/v2/D5603AQFaSO4eN5E9vA/profile-displayphoto-shrink_400_400/B56ZcGy3sIHwAg-/0/1748165688738?e=1759363200&v=beta&t=HtI-KKsnFGlsZXCN077j0cRWGLPOqpecXxDRVaTe5t4",
     },
   ];
   return <AnimatedTestimonials testimonials={testimonials} />;

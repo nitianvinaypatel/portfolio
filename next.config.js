@@ -47,6 +47,22 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.peppyocean.com",
       },
+      {
+        protocol: "https",
+        hostname: "play.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.mediadost.com",
+      },
+      {
+        protocol: "https",
+        hostname: "nitmz.ac.in",
+      },
     ],
   },
 };
